@@ -29,10 +29,12 @@ foreach ($results as $hit) {
 
     $urls[] = $url;
 
+    $base = $hit['hierarchy']['lvl0'];
     $group = $hit['hierarchy']['lvl1'];
     $name = $hit['hierarchy']['lvl2'];
+    $subtitle = $hit['hierarchy']['lvl3'];
 
-    $title = "{$group} » {$name}";
+    $title = "{$base} » {$group} » {$name}";
 
     $title = strip_tags(html_entity_decode($title, ENT_QUOTES, 'UTF-8'));
 
@@ -40,6 +42,7 @@ foreach ($results as $hit) {
         ->uid($hit['objectID'])
         ->title($title)
         ->autocomplete($title)
+        ->subtitle($subtitle)
         ->arg($url)
         ->quicklookurl($url)
         ->valid(true);
