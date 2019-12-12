@@ -31,10 +31,16 @@ foreach ($results as $hit) {
 
     $base = $hit['hierarchy']['lvl0'];
     $group = $hit['hierarchy']['lvl1'];
-    $name = $hit['hierarchy']['lvl2'];
+
     $subtitle = $hit['hierarchy']['lvl3'];
 
-    $title = "{$base} » {$group} » {$name}";
+    $title = "{$base} » {$group}";
+
+    $name = $hit['hierarchy']['lvl2'];
+
+    if ($name) {
+        $title .= " » {$name}";
+    }
 
     $title = strip_tags(html_entity_decode($title, ENT_QUOTES, 'UTF-8'));
 
